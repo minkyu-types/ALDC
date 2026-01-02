@@ -1,4 +1,4 @@
-rootProject.name = "Ask-–-Your-Motivation-Amplifier"
+rootProject.name = "Ask-Your-Motivation-Amplifier"
 
 pluginManagement {
     repositories {

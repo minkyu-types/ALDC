@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,21 +26,28 @@ fun TopBar(
     backgroundColor: Color = Color.Transparent,
     modifier: Modifier = Modifier,
 ) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    Box(
         modifier = modifier
             .height(52.dp)
             .background(backgroundColor)
             .padding(horizontal = 20.dp, vertical = 14.dp)
     ) {
+        Icon(
+            painter = painterResource(Res.drawable.img_ask_logo),
+            contentDescription = null,
+            tint = Color.Unspecified,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+        )
         Text(
             text = centerText,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .align(Alignment.Center)
         )
         ReadableIcon(
             hasRead = true,
             modifier = Modifier
+                .align(Alignment.CenterEnd)
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null

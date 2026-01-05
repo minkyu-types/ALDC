@@ -3,25 +3,21 @@ package dev.loki.domain.model
 import dev.loki.domain.type.Category
 import dev.loki.domain.type.Priority
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
 
-/**
- * @param progress 현재 진행률
- */
 data class Milestone(
-    override val id: Int,
-    override val title: String,
-    override val category: Category,
-    override val registeredDate: LocalDate,
-    override val endDate: LocalDate,
-    val progress: Float,
+    val id: Int,
+    val title: String,
+    val category: Category,
     val achievements: List<Achievement> = emptyList(),
     val priority: Priority,
+    val startDate: LocalDate,
+    val endDate: LocalDate,
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime,
     val isComplete: Boolean,
-    override val receiveNotification: Boolean,
-): HierarchicalModel<Achievement> {
-    override val children: List<Achievement> = achievements
-
-}
+    val receiveNotification: Boolean,
+)

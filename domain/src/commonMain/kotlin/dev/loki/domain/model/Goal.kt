@@ -2,18 +2,19 @@ package dev.loki.domain.model
 
 import dev.loki.domain.type.Category
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
 
 data class Goal(
-    override val id: Int,
-    override val title: String,
-    override val category: Category,
-    override val registeredDate: LocalDate,
-    override val endDate: LocalDate,
+    val id: Int,
+    val title: String,
+    val category: Category,
     val mileStones: List<Milestone> = emptyList(),
-    override val receiveNotification: Boolean,
-): HierarchicalModel<Milestone> {
-    override val children: List<Milestone> = mileStones
-}
+    val startDate: LocalDate,
+    val endDate: LocalDate,
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime,
+    val receiveNotification: Boolean,
+)

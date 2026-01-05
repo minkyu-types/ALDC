@@ -1,9 +1,9 @@
 package dev.loki.domain.model
 
-import java.time.LocalDate
-
 data class MonthlyData(
-    val date: LocalDate,
+    val id: Int,
+    val year: Int,
+    val month: Int,
     val quote: String,
     val dailyData: List<DailyData>,
     val progress: Float,

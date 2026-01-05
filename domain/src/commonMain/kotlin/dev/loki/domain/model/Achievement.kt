@@ -8,6 +8,10 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Clock
 
+/**
+ * 동기부여의 최소 단위
+ * 사용자는 N개의 Achievement를 가질 수 있음
+ */
 data class Achievement(
     val id: Int,
     val title: String,
@@ -17,5 +21,6 @@ data class Achievement(
     val endDate: LocalDate,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
+    val hasAchieved: Boolean,
     val receiveNotification: Boolean,
-)
+): Motivation

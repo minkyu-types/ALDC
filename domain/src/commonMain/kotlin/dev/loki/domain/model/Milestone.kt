@@ -4,9 +4,6 @@ import dev.loki.domain.type.Category
 import dev.loki.domain.type.Priority
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Clock
 
 /**
  * 동기부여의 단위 중 기간이 정해진 목표
@@ -14,6 +11,8 @@ import kotlin.time.Clock
  */
 data class Milestone(
     val id: Int,
+    val userId: Int,
+    val goalId: Int?,
     val title: String,
     val category: Category,
     val achievements: List<Achievement> = emptyList(),

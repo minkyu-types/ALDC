@@ -7,8 +7,8 @@ import kotlinx.datetime.LocalDateTime
  * 일반 유저 정보 (앱 내부 사용)
  */
 data class User(
-    val userId: String,
-    val anonymousId: String,
+    val userId: Int,
+    val anonymousId: Int?,
     val realName: String,
     val email: String,
     val phone: String? = null,

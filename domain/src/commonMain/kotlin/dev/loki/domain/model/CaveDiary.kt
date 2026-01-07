@@ -8,9 +8,10 @@ import kotlinx.datetime.LocalDateTime
  */
 data class CaveDiary(
     val id: Int,
+    val userId: Int,
     val title: String,
     val body: String,
-    val motivations: List<Any>,
+    val motivations: List<Motivation>,
     val thankfulThings: List<ThankfulThing>,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,

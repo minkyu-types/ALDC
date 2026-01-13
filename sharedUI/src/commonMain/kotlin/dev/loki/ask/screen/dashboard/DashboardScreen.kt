@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import dev.loki.ask.components.GradientCircularProgressIndicator
+import dev.loki.ask.component.GradientCircularProgressIndicator
 import dev.loki.ask.model.GoalModel
 
 @Composable

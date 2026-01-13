@@ -1,4 +1,4 @@
-package dev.loki.ask.components
+package dev.loki.ask.component
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.size

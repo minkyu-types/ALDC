@@ -60,6 +60,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.compose.ui.tooling)
         }
 
         iosMain.dependencies {
@@ -79,10 +80,6 @@ kotlin {
                 }
             }
         }
-}
-
-dependencies {
-    androidRuntimeClasspath(libs.compose.ui.tooling)
 }
 
 buildConfig {

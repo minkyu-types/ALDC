@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.loki.ask.theme.AppTheme
 import dev.loki.ask.theme.OnError
 import dev.loki.ask.theme.Primary
 
@@ -41,15 +42,17 @@ fun ReadableIcon(
 
 @Preview
 @Composable
-fun ReadableIconPreview() {
-    ReadableIcon(
-        false
-    ) {
-        Box(
-            modifier = Modifier
-                .padding(4.dp)
-                .size(24.dp)
-                .background(Primary, CircleShape)
-        )
+private fun ReadableIconPreview() {
+    AppTheme(onThemeChanged = {}) {
+        ReadableIcon(
+            hasRead = false
+        ) {
+            Box(
+                modifier = Modifier
+                    .padding(4.dp)
+                    .size(24.dp)
+                    .background(Primary, CircleShape)
+            )
+        }
     }
 }

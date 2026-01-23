@@ -1,11 +1,11 @@
 package dev.loki.ask.component
 
+import a_long_dark_cave.sharedui.generated.resources.Res
+import a_long_dark_cave.sharedui.generated.resources.img_aldc_logo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -16,8 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import ask_your_motivation_amplifier.sharedui.generated.resources.Res
-import ask_your_motivation_amplifier.sharedui.generated.resources.img_ask_logo
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -33,7 +31,7 @@ fun TopBar(
             .padding(horizontal = 20.dp, vertical = 14.dp)
     ) {
         Icon(
-            painter = painterResource(Res.drawable.img_ask_logo),
+            painter = painterResource(Res.drawable.img_aldc_logo),
             contentDescription = null,
             tint = Color.Unspecified,
             modifier = Modifier
@@ -56,7 +54,7 @@ fun TopBar(
                 }
         ) {
             Icon(
-                painter = painterResource(Res.drawable.img_ask_logo),
+                painter = painterResource(Res.drawable.img_aldc_logo),
                 contentDescription = null,
                 tint = Color.Unspecified,
             )

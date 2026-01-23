@@ -12,9 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.loki.ask.component.TopBar
+import dev.loki.ask.theme.AppTheme
 import dev.loki.ask.theme.Constraint
 import dev.loki.ask.theme.Primary
 import dev.loki.ask.util.toFormatted
@@ -57,5 +59,15 @@ fun HomeScreen(
                     .weight(1f)
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun HomeScreenPreview() {
+    AppTheme(onThemeChanged = {}) {
+        HomeScreen(
+            navigateTo = {}
+        )
     }
 }

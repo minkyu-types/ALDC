@@ -2,9 +2,10 @@ package dev.loki.ask.screen.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,12 +42,13 @@ fun HomeScreen(
         modifier = modifier
             .fillMaxSize()
             .background(Primary)
-            .padding(16.dp),
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         TopBar(
             centerText = uiState.date.toFormatted("MM월 dd일")
         )
+        Spacer(modifier = Modifier.height(16.dp))
         Card {
             Text(
                 text = uiState.quote.title,
@@ -59,6 +61,7 @@ fun HomeScreen(
                     .weight(1f)
             )
         }
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 

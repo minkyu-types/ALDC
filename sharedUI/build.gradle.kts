@@ -23,7 +23,6 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
     sourceSets {
         commonMain.dependencies {
             implementation(project(":domain"))
@@ -32,8 +31,8 @@ kotlin {
             api(libs.compose.ui)
             api(libs.compose.foundation)
             api(libs.compose.resources)
-            api(libs.compose.ui.tooling.preview)
             api(libs.compose.material3)
+            implementation(libs.compose.ui.tooling.preview)
             implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
             implementation(libs.kermit)
             implementation(libs.kotlinx.coroutines.core)
@@ -60,7 +59,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.compose.ui.tooling)
+            implementation(libs.androidxComposeUiTooling)
         }
 
         iosMain.dependencies {

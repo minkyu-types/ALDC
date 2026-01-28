@@ -226,6 +226,91 @@ The app uses Norse mythology naming and concepts:
 3. Use material design guidelines
 4. Consider accessibility (haptics, screen readers)
 
+## Git Workflow for AI Assistants
+
+### 브랜치 전략
+
+Claude Code와 작업할 때는 다음과 같은 계층적 브랜치 구조를 사용합니다:
+
+1. **세션 브랜치** (Session Branch)
+   - 각 Claude 세션마다 하나의 메인 브랜치 생성
+   - 네이밍: `claude/session-{SESSION_ID}`
+   - 예시: `claude/session-51CS3`
+   - 세션의 모든 작업을 위한 베이스 브랜치
+
+2. **피처 브랜치** (Feature Branch)
+   - 세션 내에서 각 기능/피처마다 별도 브랜치 생성
+   - 네이밍: `claude/session-{SESSION_ID}/{feature-name}`
+   - 예시:
+     - `claude/session-51CS3/add-login-feature`
+     - `claude/session-51CS3/fix-calendar-bug`
+     - `claude/session-51CS3/refactor-viewmodel`
+
+3. **작업 흐름**
+   ```bash
+   # 1. 세션 브랜치 생성 (세션 시작 시 한 번만)
+   git checkout -b claude/session-{SESSION_ID}
+
+   # 2. 피처 작업 시작
+   git checkout -b claude/session-{SESSION_ID}/{feature-name}
+
+   # 3. 작업 완료 후 커밋
+   git add .
+   git commit -m "feat: 기능 설명"
+
+   # 4. 푸시 및 PR 생성
+   git push -u origin claude/session-{SESSION_ID}/{feature-name}
+   gh pr create --base claude/session-{SESSION_ID} --title "피처 제목" --body "설명"
+
+   # 5. 다음 피처로 이동 (세션 브랜치로 돌아가기)
+   git checkout claude/session-{SESSION_ID}
+   git checkout -b claude/session-{SESSION_ID}/{next-feature-name}
+   ```
+
+4. **PR 생성 규칙**
+   - 각 피처 완료 시 **반드시 PR 생성**
+   - Base branch: 세션 브랜치 (`claude/session-{SESSION_ID}`)
+   - PR 제목: 명확하고 간결하게
+   - PR 본문: Summary, Test plan, 세션 링크 포함
+
+5. **커밋 메시지 규칙**
+   - Conventional Commits 형식 사용
+   - 타입: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`
+   - 예시: `feat: Add user authentication`, `fix: Resolve calendar crash`
+   - 항상 세션 링크 포함: `https://claude.ai/code/session_{SESSION_ID}`
+
+### 예시 시나리오
+
+**세션 51CS3에서 3개의 피처 작업:**
+
+```bash
+# 세션 브랜치 생성
+git checkout -b claude/session-51CS3
+
+# 피처 1: 로그인 기능
+git checkout -b claude/session-51CS3/add-login-feature
+# ... 작업 ...
+git commit -m "feat: Add login feature"
+git push -u origin claude/session-51CS3/add-login-feature
+gh pr create --base claude/session-51CS3
+
+# 피처 2: 프로필 화면
+git checkout claude/session-51CS3
+git checkout -b claude/session-51CS3/add-profile-screen
+# ... 작업 ...
+git commit -m "feat: Add profile screen"
+git push -u origin claude/session-51CS3/add-profile-screen
+gh pr create --base claude/session-51CS3
+
+# 피처 3: 버그 수정
+git checkout claude/session-51CS3
+git checkout -b claude/session-51CS3/fix-dashboard-crash
+# ... 작업 ...
+git commit -m "fix: Resolve dashboard crash on empty data"
+git push -u origin claude/session-51CS3/fix-dashboard-crash
+gh pr create --base claude/session-51CS3
+```
+
 ## Notes for AI Assistants
 
 - This is a **Kotlin Multiplatform** project; code in `commonMain` must be platform-agnostic
@@ -235,3 +320,4 @@ The app uses Norse mythology naming and concepts:
 - The app has a **Norse mythology theme**; maintain this aesthetic in naming and UX
 - All business logic belongs in **UseCases**, not ViewModels
 - ViewModels should be thin orchestrators that call UseCases
+- **IMPORTANT**: 위의 Git Workflow를 반드시 따를 것 - 세션 브랜치 + 피처별 서브 브랜치 + 각 피처마다 PR 생성

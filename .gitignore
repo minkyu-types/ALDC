@@ -56,3 +56,7 @@ DerivedData/
 
 # macOS
 .DS_Store
+
+# Environment variables
+.env*
+!.env.example

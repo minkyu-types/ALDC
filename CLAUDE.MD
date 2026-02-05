@@ -201,6 +201,63 @@ Reusable components in `sharedUI/src/commonMain/kotlin/dev/loki/ask/component/`:
 ## CI/CD
 See `CI-CD-SETUP.md` for continuous integration and deployment setup.
 
+## MCP Server Configuration
+
+This project uses **Supabase MCP Server** to enable Claude Code to interact directly with the Supabase database.
+
+### Setup Instructions
+
+1. **Copy the example configuration:**
+   ```bash
+   cp .mcp.json.example .mcp.json
+   ```
+
+2. **Edit `.mcp.json` with your Supabase credentials:**
+   ```json
+   {
+     "mcpServers": {
+       "supabase": {
+         "command": "npx",
+         "args": ["-y", "@supabase-community/supabase-mcp"],
+         "env": {
+           "SUPABASE_URL": "https://your-project-id.supabase.co",
+           "SUPABASE_KEY": "your-supabase-anon-key"
+         }
+       }
+     }
+   }
+   ```
+
+3. **Get your Supabase credentials:**
+   - Go to [Supabase Dashboard](https://supabase.com/dashboard)
+   - Select your project
+   - Settings → API
+   - Copy `Project URL` and `anon public` key
+
+### Security Notes
+
+- ⚠️ **Never commit `.mcp.json`** to Git (already in `.gitignore`)
+- ✅ Use **development/staging project** only, not production
+- ✅ `.mcp.json.example` is safe to commit (no real credentials)
+- 🔒 The `anon` key is protected by Row Level Security (RLS) policies
+
+### Available MCP Commands
+
+Once configured, Claude Code can:
+- Query database tables
+- Create/update database records
+- Run SQL queries
+- Manage database schema
+- Work with Supabase Storage
+
+### Troubleshooting
+
+- **MCP not working?** Restart Claude Code after editing `.mcp.json`
+- **Permission errors?** Check RLS policies in Supabase Dashboard
+- **Connection issues?** Verify your project URL and API key
+
+For more details, see: https://github.com/supabase-community/supabase-mcp
+
 ## Norse Mythology Theme
 
 The app uses Norse mythology naming and concepts:

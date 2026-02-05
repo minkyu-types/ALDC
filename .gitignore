@@ -56,3 +56,10 @@ DerivedData/
 
 # macOS
 .DS_Store
+
+# Environment variables
+.env*
+!.env.example
+
+# MCP Server Configuration (contains API keys)
+.mcp.json
